@@ -43,12 +43,23 @@ public class DataServiceImpl implements DataService {
 		List<SensorData> list = dataDao.getHistory(date-3600000,date); 
 		return list;
 	}
-
+/**
+ * 获取最近规定时间内的所有记录
+ */
 	@Override
 	public List<SensorData> getHistory(long from, long to) {
 		List<SensorData> list = dataDao.getHistory(from,to); 
 		return list;
 	}
+
+	/**
+	 * 获取最近的10条记录
+	 */
+@Override
+public List<SensorData> get10line() {
+	List<SensorData> list = dataDao.get10line(); 
+	return list;
+}
 	
 
 }

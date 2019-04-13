@@ -34,11 +34,23 @@ public class DataController {
 		}
 			
 		
-		@RequestMapping(value = "/data/history",method = RequestMethod.POST)
+		@RequestMapping(value = "/data/history",method = RequestMethod.GET)
 		@ResponseBody
 		public ResultVO<Object> getHistory(long from ,long to){
 			List<SensorData> dataList =  dataServiceImpl.getHistory(from,to);
 			return ResultVOUtil.success("已获取规定时间内的传感器数据", dataList);
+			
+		}
+		
+		/**
+		 * 获取最近的十条记录
+		 * @return
+		 */
+		@RequestMapping(value = "/data/past10line",method = RequestMethod.GET)
+		@ResponseBody
+		public ResultVO<Object> getHistory(){
+			List<SensorData> dataList =  dataServiceImpl.get10line();
+			return ResultVOUtil.success("已获取最近的10条传感器数据", dataList);
 			
 		}
 		
